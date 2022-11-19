@@ -8,7 +8,7 @@ public class DisplayCase extends LinkedList{
 
     public LinkedList<DisplayTray> displayTrays = new LinkedList<>();
 
-    //create a head reference for displaytray LL
+    //create a head reference for displayTray LL
     private Node head;
     private String caseNumber;
     private String mounted;
