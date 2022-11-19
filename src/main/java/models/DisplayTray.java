@@ -71,4 +71,12 @@ public class DisplayTray {
                 "  " + color +
                 "  " + width + " x " + depth + '\n';
     }
+
+//    @Override
+//    public String listAll() {
+//        return trayIdentifier +
+//                "  " + color +
+//                "  " + width + " x " + depth + '\n'
+//                +
+//    }
 }

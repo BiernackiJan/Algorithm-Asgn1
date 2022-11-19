@@ -67,7 +67,7 @@ public class DisplayCase extends LinkedList{
     public String toString() {
         return  letter + "" + caseNumber +
                 "  " + mounted +
-                "  " + lit + '\n' ;
+                "  " + lit + '\n';
     }
 }
 

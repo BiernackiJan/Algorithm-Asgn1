@@ -3,10 +3,7 @@ package com.asgn.algorithmasgn1;
 import Resources.LinkedList;
 import Resources.Node;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import models.Components;
 import models.DisplayCase;
@@ -104,7 +101,9 @@ public class CaseController {
 
     //Inspect Stock
     @FXML
-    private TreeView<String> viewAll;
+    private TreeView viewAll;
+    @FXML
+    private ListView<Components> compList;
 
 
 
@@ -272,6 +271,39 @@ public class CaseController {
     @FXML
     void viewAllStock(MouseEvent event) {
         //Inspect Store
+        TreeItem rootItem = new TreeItem<>("Display Cases: ");
+
+        viewAll.setRoot(rootItem);
+
+        String str = "   Trays:";
+        String str1 = "    Items:";
+
+        for(int i = 0; i < list.numNodes(); i++) {
+            DisplayCase dc = (DisplayCase) list.get(i);
+            TreeItem treeCase = new TreeItem<>(dc + str);
+            rootItem.getChildren().add(treeCase);
+            for (int j = 0; j < dc.displayTrays.numNodes(); j++){
+                DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                TreeItem treeTray = new TreeItem<>(dt + str1);
+                treeCase.getChildren().add(treeTray);
+                for(int k = 0; i < dt.items.numNodes(); k++){
+                    Items items = (Items) dt.items.get(k);
+                    TreeItem treeItem = new TreeItem<>(items);
+                    treeTray.getChildren().add(treeItem);
+                }
+            }
+        }
+    }
+
+    @FXML
+    void getItemComponents(MouseEvent event){
+        if(pickItem.getItems().contains(viewAll.getSelectionModel().getSelectedItem())){
+            Items item = (Items) viewAll.getSelectionModel().getSelectedItem();
+            for(int i = 0; i < item.components.numNodes(); i++){
+                Components ct = (Components) item.components.get(i);
+                compList.getItems().add(ct);
+            }
+        }
     }
 
 
