@@ -212,7 +212,7 @@
                             <children>
                                 <TreeView fx:id="viewAll" layoutX="14.0" layoutY="14.0" onMouseClicked="#getItemComponents" prefHeight="325.0" prefWidth="431.0" />
                                 <Button layoutX="175.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#viewAllStock" prefHeight="31.0" prefWidth="110.0" text="View All Stock" />
-                        <ListView layoutX="473.0" layoutY="83.0" prefHeight="188.0" prefWidth="304.0" />
+                        <ListView fx:id="compList" layoutX="473.0" layoutY="83.0" prefHeight="188.0" prefWidth="304.0" />
                         <Label layoutX="546.0" layoutY="51.0" prefHeight="31.0" prefWidth="157.0" text="Selected Item Components">
                            <font>
                               <Font name="System Bold" size="12.0" />

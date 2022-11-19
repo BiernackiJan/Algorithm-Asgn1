@@ -10,6 +10,8 @@ import models.DisplayCase;
 import models.DisplayTray;
 import models.Items;
 
+import java.lang.reflect.Type;
+
 
 public class CaseController {
 
@@ -133,7 +135,6 @@ public class CaseController {
             dc.getItems().addAll(str);
             caseID += CaseLetter.getValue() + "" + CaseNumber.getValue() + " "; //adding ID's of DC to make sure that two aren't created with the same ID
             cases++;
-            System.out.println(list);
         }
     }
     @FXML
@@ -280,15 +281,15 @@ public class CaseController {
 
         for(int i = 0; i < list.numNodes(); i++) {
             DisplayCase dc = (DisplayCase) list.get(i);
-            TreeItem treeCase = new TreeItem<>(dc + str);
+            TreeItem treeCase = new TreeItem(dc + str);
             rootItem.getChildren().add(treeCase);
             for (int j = 0; j < dc.displayTrays.numNodes(); j++){
                 DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
-                TreeItem treeTray = new TreeItem<>(dt + str1);
+                TreeItem treeTray = new TreeItem(dt + str1);
                 treeCase.getChildren().add(treeTray);
-                for(int k = 0; i < dt.items.numNodes(); k++){
+                for(int k = 0; k < dt.items.numNodes(); k++){
                     Items items = (Items) dt.items.get(k);
-                    TreeItem treeItem = new TreeItem<>(items);
+                    TreeItem treeItem = new TreeItem(items);
                     treeTray.getChildren().add(treeItem);
                 }
             }
@@ -296,12 +297,35 @@ public class CaseController {
     }
 
     @FXML
-    void getItemComponents(MouseEvent event){
-        if(pickItem.getItems().contains(viewAll.getSelectionModel().getSelectedItem())){
-            Items item = (Items) viewAll.getSelectionModel().getSelectedItem();
-            for(int i = 0; i < item.components.numNodes(); i++){
-                Components ct = (Components) item.components.get(i);
-                compList.getItems().add(ct);
+    void getItemComponents(MouseEvent event) {
+
+//        if(pickItem.getItems().contains(viewAll.getSelectionModel().getSelectedItem())){
+//            Items item = (Items) viewAll.getSelectionModel().getSelectedItem();
+//            for(int i = 0; i < item.components.numNodes(); i++){
+//                Components ct = (Components) item.components.get(i);
+//                compList.getItems().add(ct);
+//            }
+//        }
+        //compList.getItems().add(new Components("A", "b", 1, 1));
+//        System.out.println(viewAll.getSelectionModel().getSelectedItem());
+        if (viewAll.getSelectionModel().getSelectedItem() != null) {
+            for (int i = 0; i < list.numNodes(); i++) {
+                DisplayCase dc = (DisplayCase) list.get(i);
+                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {
+                    DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                    for (int k = 0; k < dt.items.numNodes(); k++) {
+                        Items items = (Items) dt.items.get(k);
+                        String str = viewAll.getSelectionModel().getSelectedItem().toString();
+                        String str1 = items.toString();
+                        if (str.contains(str1)) {
+                            for (int l = 0; l < items.components.numNodes(); l++) {
+                                Components cp = (Components) items.components.get(l);
+                                compList.getItems().add(cp);
+                            }
+                        } else compList.getItems().clear();
+                    }
+
+                }
             }
         }
     }
