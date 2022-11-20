@@ -16,7 +16,7 @@ public class DisplayCase extends LinkedList{
 
     private String letter;
 
-    public int numTrays = 0;
+    public int casePrice = 0;
 
     public DisplayCase(String letter, String caseNumber, String mounted, String lit){
         this.caseNumber = caseNumber;
@@ -28,6 +28,13 @@ public class DisplayCase extends LinkedList{
     public String identifier(){
         String str = letter + "" + caseNumber;
         return str;
+    }
+
+    public void caseValue() {
+        for (int i = 0; i < displayTrays.numNodes(); i++) {
+            int pr = ((DisplayTray)displayTrays.get(i)).priceTray();
+            casePrice += pr;
+        }
     }
 
     public String getCaseNumber () {
@@ -56,7 +63,6 @@ public class DisplayCase extends LinkedList{
 
     public void addTray(DisplayTray dt){
         displayTrays.add(dt);
-        numTrays++;
     }
 
     public void getTray(int index) {displayTrays.get(index);}

@@ -58,7 +58,7 @@
                                 </Label>
                                 <Button layoutX="705.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#addCase" text="Add" />
                                 <ComboBox fx:id="CaseNumber" layoutX="292.0" layoutY="23.0" prefHeight="25.0" prefWidth="77.0" />
-                                <ListView fx:id="dc" layoutX="32.0" layoutY="78.0" prefHeight="333.0" prefWidth="721.0" />
+                                <ListView fx:id="dc" layoutX="32.0" layoutY="78.0" prefHeight="245.0" prefWidth="721.0" />
                                 <ComboBox fx:id="pickMounted" layoutX="541.0" layoutY="23.0" prefHeight="25.0" prefWidth="109.0" />
                                 <ComboBox fx:id="pickLit" layoutX="426.0" layoutY="23.0" prefHeight="25.0" prefWidth="88.0" />
                                 <Button layoutX="342.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="37.0" prefWidth="127.0" text="Reset Facility" textFill="RED">
@@ -66,6 +66,17 @@
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Button>
+                        <Group layoutX="231.0" layoutY="359.0">
+                           <children>
+                              <ListView fx:id="caseValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
+                              <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueCase" prefHeight="33.0" prefWidth="89.0" text="Case Value" textFill="#0b83e0">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <ComboBox fx:id="caseToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Case" />
+                           </children>
+                        </Group>
                             </children>
                         </AnchorPane>
                     </content>
@@ -108,7 +119,7 @@
                                                 <Button layoutX="143.0" mnemonicParsing="false" onMouseClicked="#listTrays" prefHeight="25.0" prefWidth="58.0" text="List" />
                                             </children>
                                         </Group>
-                                        <ListView fx:id="dt" layoutY="35.0" prefHeight="303.0" prefWidth="712.0" />
+                                        <ListView fx:id="dt" layoutY="35.0" prefHeight="247.0" prefWidth="712.0" />
                                     </children>
                                 </Group>
                                 <Label layoutX="279.0" layoutY="75.0" prefHeight="28.0" prefWidth="117.0" text="Choose a case to view" underline="true">
@@ -116,6 +127,17 @@
                                         <Font name="Arial Narrow" size="14.0" />
                                     </font>
                                 </Label>
+                        <Group layoutX="223.0" layoutY="423.0">
+                           <children>
+                              <ListView fx:id="trayValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
+                              <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueTray" prefHeight="33.0" prefWidth="89.0" text="Tray Value" textFill="#e20ab0">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <ComboBox fx:id="trayToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Tray" />
+                           </children>
+                        </Group>
                             </children></AnchorPane>
                     </content>
                 </Tab>

@@ -17,8 +17,6 @@ public class CaseController {
 
     public static LinkedList<DisplayCase> list = new LinkedList<>(); //LL to store Display Cases
 
-
-    private int cases = 0; //Counting num of cases everytime one is added
     private String trayID = ""; //String used to store all ID's of Trays in the system
     private String caseID = ""; //String used to store all ID's of Cases in the system
     private int totalPrice; //Int used to calculate the total price of all stock in the system
@@ -40,7 +38,7 @@ public class CaseController {
     @FXML
     public ComboBox<String> pickMounted;
     @FXML
-    private ListView<String> dc;
+    public ListView<String> dc;
 
 
 
@@ -60,7 +58,11 @@ public class CaseController {
     @FXML
     public ComboBox<DisplayCase> showCase;
     @FXML
-    private ListView<String> dt;
+    public ListView<String> dt;
+    @FXML
+    public ComboBox<DisplayTray> trayToValue;
+    @FXML
+    public ListView<String> trayValue;
 
 
 
@@ -134,7 +136,6 @@ public class CaseController {
             String str = "Display Case: " + CaseLetter.getSelectionModel().getSelectedItem() + "" + CaseNumber.getSelectionModel().getSelectedItem() + " " + pickLit.getSelectionModel().getSelectedItem() + " " + pickMounted.getSelectionModel().getSelectedItem() + " ";
             dc.getItems().addAll(str);
             caseID += CaseLetter.getValue() + "" + CaseNumber.getValue() + " "; //adding ID's of DC to make sure that two aren't created with the same ID
-            cases++;
         }
     }
     @FXML
@@ -178,12 +179,14 @@ public class CaseController {
                 displayCaseChosen.addTray(tray);
                 trayID += pickLetter.getValue() + "" + pickNum.getValue() + " "; //recording Tray ID's as to not have two with the same ID in the whole system no matter in what DC
                 chooseTray.getItems().add(tray);
+                trayToValue.getItems().add(tray);
             }
         } else { //if trayID id is empty add displayTray to chosen DC
             DisplayCase displayCaseChosen = pickCase.getSelectionModel().getSelectedItem();
             displayCaseChosen.addTray(tray);
             trayID += pickLetter.getValue() + "" + pickNum.getValue() + " ";
             chooseTray.getItems().add(tray);
+            trayToValue.getItems().add(tray);
         }
     }
     @FXML
@@ -206,6 +209,12 @@ public class CaseController {
             }
         }
     }
+    @FXML
+    void valueTray(MouseEvent event){
+        trayValue.getItems().clear();
+        String trayV = "$" + trayToValue.getSelectionModel().getSelectedItem().priceTray();
+        trayValue.getItems().add(trayV);
+    }
 
 
 
@@ -216,8 +225,10 @@ public class CaseController {
         Items item = new Items(typeDesc.getText(),itemType.getValue(),gender.getValue(),tPrice);
         DisplayTray displayTrayChosen = pickTray.getSelectionModel().getSelectedItem(); //setting the chosen display Tray to be able to add Item to it
         displayTrayChosen.addItem(item); //adding item to chosen tray
-        totalPrice += tPrice; //adding the retail price of item to totalPrice of all stock;
+        totalPrice += tPrice; //adding the retail price of item to totalPrice of all stock
         pickItem.getItems().add(item);//populating the choice box with each added item
+
+        displayTrayChosen.priceUp(tPrice);
         //itemToDel.getItems().add(item);
     }
     @FXML
@@ -236,7 +247,7 @@ public class CaseController {
         totalPrice -= price;
         tray.items.deleteNode(index);
         pickItem.getItems().remove(index);
-
+        tray.priceDown(price);
     }
     @FXML
     void populateItem(MouseEvent event){
@@ -295,7 +306,6 @@ public class CaseController {
             }
         }
     }
-
     @FXML
     void getItemComponents(MouseEvent event) {
 

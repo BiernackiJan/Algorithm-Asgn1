@@ -14,6 +14,8 @@ public class DisplayTray {
 
     private String depth;
 
+    private int trayPrice = 0;
+
     public DisplayTray(String trayLetter, String trayNum, String color, String width, String depth){
         this.trayIdentifier = trayLetter+trayNum;
         this.color = color;
@@ -21,37 +23,11 @@ public class DisplayTray {
         this.depth = depth;
     }
 
-    public String getTrayIdentifier() {
-        return trayIdentifier;
-    }
+    public int priceTray(){return trayPrice;}
 
-    public void setTrayidentifier(String trayidentifier) {
-        this.trayIdentifier = trayidentifier;
-    }
+    public void priceUp(int price){trayPrice += price;}
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getWidth() {
-        return width;
-    }
-
-    public void setWidth(String width) {
-        this.width = width;
-    }
-
-    public String getDepth() {
-        return depth;
-    }
-
-    public void setDepth(String depth) {
-        this.depth = depth;
-    }
+    public void  priceDown(int price){trayPrice -= price;}
 
     public void addItem(Items it){ items.add(it); }
 
@@ -64,6 +40,10 @@ public class DisplayTray {
     }
 
     public void getItem(int index){items.get(index);}
+
+
+
+
 
     @Override
     public String toString() {

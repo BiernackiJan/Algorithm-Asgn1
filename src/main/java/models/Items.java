@@ -63,8 +63,8 @@ public class Items {
 
     @Override
     public String toString() {
-        return description + "  " +
-                "  " + type +
+        return  type + "  " +
+                "  " + description +
                 ",  For " + gender +
                 // ", imageURl='" + imageURl + '\'' +
                 ",  Retail Price: $" + rPrice + '\n';
