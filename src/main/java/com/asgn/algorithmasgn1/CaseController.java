@@ -114,6 +114,10 @@ public class CaseController {
     private TreeView viewAll;
     @FXML
     private ListView<Components> compList;
+    @FXML
+    private ListView<String> searchView;
+    @FXML
+    private TextField keywords;
 
 
 
@@ -321,6 +325,11 @@ public class CaseController {
                     Items items = (Items) dt.items.get(k);
                     TreeItem treeItem = new TreeItem(items);
                     treeTray.getChildren().add(treeItem);
+                    for(int l = 0; l < items.components.numNodes(); l++){
+                        Components comp = (Components) items.components.get(l);
+                        TreeItem compItem = new TreeItem(comp);
+                        treeItem.getChildren().add(compItem);
+                    }
                 }
             }
         }
@@ -338,23 +347,49 @@ public class CaseController {
         //compList.getItems().add(new Components("A", "b", 1, 1));
 //        System.out.println(viewAll.getSelectionModel().getSelectedItem());
         compList.getItems().clear();
-        if (viewAll.getSelectionModel().getSelectedItem() != null) {
-            for (int i = 0; i < list.numNodes(); i++) {
+        if (viewAll.getSelectionModel().getSelectedItem() != null) {//if something is chosen
+            for (int i = 0; i < list.numNodes(); i++) {//scrolling through dc
                 DisplayCase dc = (DisplayCase) list.get(i);
-                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {
+                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {//scrolling through dt
                     DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
-                    for (int k = 0; k < dt.items.numNodes(); k++) {
+                    for (int k = 0; k < dt.items.numNodes(); k++) {//scrolling through items
                         Items items = (Items) dt.items.get(k);
-                        String str = viewAll.getSelectionModel().getSelectedItem().toString();
+                        String str = searchView.getSelectionModel().getSelectedItem();
                         String str1 = items.toString();
-                        if (str.contains(str1)) {
-                            for (int l = 0; l < items.components.numNodes(); l++) {
+                        if (str.contains(str1)) {//if chosen item in treeView is the item currently that the loop is at
+                            for (int l = 0; l < items.components.numNodes(); l++) {//scrolling through materials
                                 Components cp = (Components) items.components.get(l);
                                 compList.getItems().add(cp);
                             }
                         }
                     }
 
+                }
+            }
+        }
+    }
+    @FXML
+    void search(MouseEvent event) {
+        //keywords searchView
+        searchView.getItems().clear();
+        for (int i = 0; i < list.numNodes(); i++) {//scrolling through dc
+            DisplayCase dc = (DisplayCase) list.get(i);
+            for (int j = 0; j < dc.displayTrays.numNodes(); j++) {//scrolling through dt
+                DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                for (int k = 0; k < dt.items.numNodes(); k++) {//scrolling through items
+                    Items items = (Items) dt.items.get(k);
+                    String str = items.toString();
+                    String str1 = keywords.getText();
+                    if (str.contains(str1)) {
+                        String allItems = dc + "  " + dt + "   " + items;
+                        searchView.getItems().add(allItems);
+                        for (int l = 0; l < items.components.numNodes(); l++) {
+                            Components cp = (Components) items.components.get(l);
+                            searchView.getItems().add("    " + cp);
+                        }
+                        String n = '\n' + "";
+                        searchView.getItems().add(n);
+                    }
                 }
             }
         }
@@ -391,18 +426,18 @@ public class CaseController {
     }
 
 
-    public void load() throws Exception {
-        //list of classes that you wish to include in the serialisation, separated by a comma
-        Class<?>[] classes = new Class[]{DisplayCase.class};
-
-        //setting up the xstream object with default security and the above classes
-        XStream xstream = new XStream(new DomDriver());
-        XStream.setupDefaultSecurity(xstream);
-        xstream.allowTypes(classes);
-
-        //doing the actual serialisation to an XML file
-        ObjectInputStream in = xstream.createObjectInputStream(new FileReader(fileName()));
-        developers = (List<Developer>) in.readObject();
-        in.close();
-    }
+//    public void load() throws Exception {
+//        //list of classes that you wish to include in the serialisation, separated by a comma
+//        Class<?>[] classes = new Class[]{DisplayCase.class};
+//
+//        //setting up the xstream object with default security and the above classes
+//        XStream xstream = new XStream(new DomDriver());
+//        XStream.setupDefaultSecurity(xstream);
+//        xstream.allowTypes(classes);
+//
+//        //doing the actual serialisation to an XML file
+//        ObjectInputStream in = xstream.createObjectInputStream(new FileReader(fileName()));
+//        developers = (List<Developer>) in.readObject();
+//        in.close();
+//    }
 }

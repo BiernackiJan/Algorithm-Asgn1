@@ -13,9 +13,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Scene1" maxHeight="-1.0" maxWidth="-1.0" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
+<AnchorPane fx:id="Scene1" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
     <children>
         <TabPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="514.0" prefWidth="811.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="Infinity" AnchorPane.topAnchor="-1.0">
             <tabs>
@@ -66,17 +67,17 @@
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Button>
-                        <Group layoutX="231.0" layoutY="359.0">
-                           <children>
-                              <ListView fx:id="caseValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
-                              <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueCase" prefHeight="33.0" prefWidth="89.0" text="Case Value" textFill="#0b83e0">
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </Button>
-                              <ComboBox fx:id="caseToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Case" />
-                           </children>
-                        </Group>
+                                <Group layoutX="231.0" layoutY="359.0">
+                                    <children>
+                                        <ListView fx:id="caseValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
+                                        <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueCase" prefHeight="33.0" prefWidth="89.0" text="Case Value" textFill="#0b83e0">
+                                            <font>
+                                                <Font name="System Bold" size="13.0" />
+                                            </font>
+                                        </Button>
+                                        <ComboBox fx:id="caseToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Case" />
+                                    </children>
+                                </Group>
                             </children>
                         </AnchorPane>
                     </content>
@@ -127,17 +128,17 @@
                                         <Font name="Arial Narrow" size="14.0" />
                                     </font>
                                 </Label>
-                        <Group layoutX="223.0" layoutY="423.0">
-                           <children>
-                              <ListView fx:id="trayValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
-                              <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueTray" prefHeight="33.0" prefWidth="89.0" text="Tray Value" textFill="#e20ab0">
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </Button>
-                              <ComboBox fx:id="trayToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Tray" />
-                           </children>
-                        </Group>
+                                <Group layoutX="223.0" layoutY="423.0">
+                                    <children>
+                                        <ListView fx:id="trayValue" layoutX="146.0" layoutY="2.0" prefHeight="30.0" prefWidth="108.0" />
+                                        <Button layoutX="260.0" mnemonicParsing="false" onMouseClicked="#valueTray" prefHeight="33.0" prefWidth="89.0" text="Tray Value" textFill="#e20ab0">
+                                            <font>
+                                                <Font name="System Bold" size="13.0" />
+                                            </font>
+                                        </Button>
+                                        <ComboBox fx:id="trayToValue" layoutY="4.0" prefHeight="25.0" prefWidth="137.0" promptText="Tray" />
+                                    </children>
+                                </Group>
                             </children></AnchorPane>
                     </content>
                 </Tab>
@@ -230,16 +231,33 @@
                 </Tab>
                 <Tab text="Inspect Stock">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="807.0">
                             <children>
-                                <TreeView fx:id="viewAll" layoutX="14.0" layoutY="14.0" onMouseClicked="#getItemComponents" prefHeight="325.0" prefWidth="431.0" />
-                                <Button layoutX="175.0" layoutY="351.0" mnemonicParsing="false" onMouseClicked="#viewAllStock" prefHeight="31.0" prefWidth="110.0" text="View All Stock" />
-                        <ListView fx:id="compList" layoutX="473.0" layoutY="83.0" prefHeight="188.0" prefWidth="304.0" />
-                        <Label layoutX="546.0" layoutY="51.0" prefHeight="31.0" prefWidth="157.0" text="Selected Item Components">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
+                                <TreeView fx:id="viewAll" layoutX="14.0" layoutY="14.0" prefHeight="325.0" prefWidth="417.0" />
+                                <Button layoutX="168.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#viewAllStock" prefHeight="31.0" prefWidth="110.0" text="View All Stock" />
+                                <Group layoutX="446.0" layoutY="14.0">
+                                    <children>
+                                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#02784a" height="282.0" stroke="BLACK" strokeType="INSIDE" width="357.0" />
+                                        <ListView fx:id="searchView" layoutX="16.0" layoutY="87.0" onMouseClicked="#getItemComponents" prefHeight="182.0" prefWidth="326.0" />
+                                        <Button layoutX="222.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="23.0" prefWidth="61.0" text="Search" />
+                                        <TextField fx:id="keywords" layoutX="74.0" layoutY="53.0" prefHeight="25.0" prefWidth="148.0" />
+                                        <Label layoutX="102.0" layoutY="14.0" prefHeight="28.0" prefWidth="141.0" text="Keyword Search" textFill="#e4ff00">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </Group>
+                                <Group layoutX="473.0" layoutY="315.0">
+                                    <children>
+                                        <ListView fx:id="compList" layoutY="32.0" prefHeight="105.0" prefWidth="304.0" />
+                                        <Label layoutX="73.0" prefHeight="31.0" prefWidth="157.0" text="Selected Item Components">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </Group>
                             </children>
                         </AnchorPane>
                     </content>
