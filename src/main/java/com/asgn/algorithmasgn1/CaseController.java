@@ -284,6 +284,56 @@ public class CaseController {
             }
         }
     }
+    @FXML
+    void smartAdd(MouseEvent event) {
+        boolean it = false;
+        int tPrice = Integer.parseInt(rPrice.getValue()); //changing rPrice from string to int for later calculations and to input into constructor
+        Items itemToAdd = new Items(typeDesc.getText(), itemType.getValue(), gender.getValue(), tPrice);
+
+        if (!it) {
+            for (int i = 0; i < list.numNodes(); i++) {
+                DisplayCase dc = (DisplayCase) list.get(i);
+                if (!it) {
+                    for (int j = 0; j < dc.displayTrays.numNodes(); j++) {
+                        DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                        if (dc.displayTrays.numNodes() == 1) {
+                            dt.items.add(itemToAdd);
+                            totalPrice += tPrice;
+                            it = true;
+                        }
+                        if (it == false) {
+                            for (int k = 0; k < dt.items.numNodes(); k++) {
+                                Items item = (Items) dt.items.get(k);
+                                if (it == false) {
+                                    String str = itemType.getValue() + "";
+                                    System.out.println(str);
+                                    System.out.println(item.getType());
+                                    if (item.getType().equals(str)) {
+                                        dt.items.add(itemToAdd);
+                                        totalPrice += tPrice;
+                                        it = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(it == false) {
+            for (int i = 0; i < list.numNodes(); i++) {
+                DisplayCase dc = (DisplayCase) list.get(i);
+                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {
+                    if(it == false) {
+                        DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                        dt.items.add(itemToAdd);
+                        totalPrice += tPrice;
+                        it = true;
+                    }
+                }
+            }
+        }
+    }
 
 
 

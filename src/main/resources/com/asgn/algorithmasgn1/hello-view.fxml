@@ -30,7 +30,7 @@
                                     </image></ImageView>
                                 <Label layoutX="273.0" layoutY="29.0" prefHeight="62.0" prefWidth="251.0" text="WELCOME TO MY " textAlignment="CENTER">
                                     <font>
-                                        <Font name="Ravie" size="21.0" />
+                                        <Font name="Ravie" size="25.0" />
                                     </font>
                                 </Label>
                                 <Label layoutX="247.0" layoutY="67.0" prefHeight="48.0" prefWidth="320.0" text="JEWELLERY STORE" textFill="RED" underline="true">
@@ -166,7 +166,7 @@
                                 <ComboBox fx:id="gender" layoutX="168.0" layoutY="269.0" prefHeight="30.0" prefWidth="135.0" promptText="For" />
                                 <ComboBox fx:id="rPrice" layoutX="168.0" layoutY="324.0" prefHeight="30.0" prefWidth="135.0" promptText="Retail Price" />
                                 <TextField fx:id="imageUrl" layoutX="19.0" layoutY="324.0" prefHeight="30.0" prefWidth="137.0" promptText="Image URL" />
-                                <Button layoutX="124.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#addItem" prefHeight="36.0" prefWidth="78.0" text="Add Item" textFill="#190d0d">
+                                <Button layoutX="76.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#addItem" prefHeight="36.0" prefWidth="78.0" text="Add " textFill="#190d0d">
                                     <font>
                                         <Font name="System Bold" size="13.0" />
                                     </font>
@@ -184,6 +184,11 @@
                                 </Button>
                                 <ComboBox fx:id="itemToDel" layoutX="502.0" layoutY="355.0" prefHeight="30.0" prefWidth="156.0" promptText="Item to Delete" />
                                 <ComboBox fx:id="chooseTray" layoutX="502.0" layoutY="324.0" onMouseExited="#populateItem" prefHeight="30.0" prefWidth="156.0" promptText="Pick Tray" />
+                        <Button layoutX="168.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#smartAdd" prefHeight="36.0" prefWidth="90.0" text="Smart Add" textFill="#190d0d">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
                             </children></AnchorPane>
                     </content>
                 </Tab>
