@@ -10,11 +10,13 @@ import models.DisplayCase;
 import models.DisplayTray;
 import models.Items;
 
+import java.io.FileReader;
+import java.io.ObjectInputStream;
 import java.lang.reflect.Type;
+import java.util.List;
 
 
 public class CaseController {
-
     public static LinkedList<DisplayCase> list = new LinkedList<>(); //LL to store Display Cases
 
     private String trayID = ""; //String used to store all ID's of Trays in the system
@@ -39,6 +41,10 @@ public class CaseController {
     public ComboBox<String> pickMounted;
     @FXML
     public ListView<String> dc;
+    @FXML
+    public ComboBox<DisplayCase> caseToValue;
+    @FXML
+    public ListView<String> caseValue;
 
 
 
@@ -136,6 +142,7 @@ public class CaseController {
             String str = "Display Case: " + CaseLetter.getSelectionModel().getSelectedItem() + "" + CaseNumber.getSelectionModel().getSelectedItem() + " " + pickLit.getSelectionModel().getSelectedItem() + " " + pickMounted.getSelectionModel().getSelectedItem() + " ";
             dc.getItems().addAll(str);
             caseID += CaseLetter.getValue() + "" + CaseNumber.getValue() + " "; //adding ID's of DC to make sure that two aren't created with the same ID
+            caseToValue.getItems().add(dc1);
         }
     }
     @FXML
@@ -161,6 +168,16 @@ public class CaseController {
         viewMaterial.getItems().clear();
 
         totalPrice = 0;
+    }
+    @FXML
+    void valueCase(MouseEvent event){
+        caseValue.getItems().clear();
+        DisplayCase dispCase = caseToValue.getSelectionModel().getSelectedItem();
+        dispCase.caseValue();
+        if(caseToValue.getSelectionModel().getSelectedItem() != null) {
+            String caseV = "$" + caseToValue.getSelectionModel().getSelectedItem().casePrice;
+            caseValue.getItems().add(caseV);
+        }
     }
 
 
@@ -212,8 +229,10 @@ public class CaseController {
     @FXML
     void valueTray(MouseEvent event){
         trayValue.getItems().clear();
-        String trayV = "$" + trayToValue.getSelectionModel().getSelectedItem().priceTray();
-        trayValue.getItems().add(trayV);
+        if(trayToValue.getSelectionModel().getSelectedItem() != null) {
+            String trayV = "$" + trayToValue.getSelectionModel().getSelectedItem().priceTray();
+            trayValue.getItems().add(trayV);
+        }
     }
 
 
@@ -318,6 +337,7 @@ public class CaseController {
 //        }
         //compList.getItems().add(new Components("A", "b", 1, 1));
 //        System.out.println(viewAll.getSelectionModel().getSelectedItem());
+        compList.getItems().clear();
         if (viewAll.getSelectionModel().getSelectedItem() != null) {
             for (int i = 0; i < list.numNodes(); i++) {
                 DisplayCase dc = (DisplayCase) list.get(i);
@@ -332,7 +352,7 @@ public class CaseController {
                                 Components cp = (Components) items.components.get(l);
                                 compList.getItems().add(cp);
                             }
-                        } else compList.getItems().clear();
+                        }
                     }
 
                 }
@@ -368,5 +388,21 @@ public class CaseController {
         quality.getItems().addAll("1", "2", "3", "4", "5", "6","7","8","9","10", "11", "12", "13", "14", "15", "16");
         quality.setEditable(true);
 
+    }
+
+
+    public void load() throws Exception {
+        //list of classes that you wish to include in the serialisation, separated by a comma
+        Class<?>[] classes = new Class[]{DisplayCase.class};
+
+        //setting up the xstream object with default security and the above classes
+        XStream xstream = new XStream(new DomDriver());
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
+
+        //doing the actual serialisation to an XML file
+        ObjectInputStream in = xstream.createObjectInputStream(new FileReader(fileName()));
+        developers = (List<Developer>) in.readObject();
+        in.close();
     }
 }
