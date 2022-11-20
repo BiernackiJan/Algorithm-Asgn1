@@ -335,40 +335,6 @@ public class CaseController {
         }
     }
     @FXML
-    void getItemComponents(MouseEvent event) {
-
-//        if(pickItem.getItems().contains(viewAll.getSelectionModel().getSelectedItem())){
-//            Items item = (Items) viewAll.getSelectionModel().getSelectedItem();
-//            for(int i = 0; i < item.components.numNodes(); i++){
-//                Components ct = (Components) item.components.get(i);
-//                compList.getItems().add(ct);
-//            }
-//        }
-        //compList.getItems().add(new Components("A", "b", 1, 1));
-//        System.out.println(viewAll.getSelectionModel().getSelectedItem());
-        compList.getItems().clear();
-        if (viewAll.getSelectionModel().getSelectedItem() != null) {//if something is chosen
-            for (int i = 0; i < list.numNodes(); i++) {//scrolling through dc
-                DisplayCase dc = (DisplayCase) list.get(i);
-                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {//scrolling through dt
-                    DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
-                    for (int k = 0; k < dt.items.numNodes(); k++) {//scrolling through items
-                        Items items = (Items) dt.items.get(k);
-                        String str = searchView.getSelectionModel().getSelectedItem();
-                        String str1 = items.toString();
-                        if (str.contains(str1)) {//if chosen item in treeView is the item currently that the loop is at
-                            for (int l = 0; l < items.components.numNodes(); l++) {//scrolling through materials
-                                Components cp = (Components) items.components.get(l);
-                                compList.getItems().add(cp);
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-    }
-    @FXML
     void search(MouseEvent event) {
         //keywords searchView
         searchView.getItems().clear();
@@ -381,15 +347,37 @@ public class CaseController {
                     String str = items.toString();
                     String str1 = keywords.getText();
                     if (str.contains(str1)) {
-                        String allItems = dc + "  " + dt + "   " + items;
+                        String allItems = dc + "  " + dt;
                         searchView.getItems().add(allItems);
-                        for (int l = 0; l < items.components.numNodes(); l++) {
-                            Components cp = (Components) items.components.get(l);
-                            searchView.getItems().add("    " + cp);
-                        }
+                        searchView.getItems().add("   " + items);
                         String n = '\n' + "";
                         searchView.getItems().add(n);
                     }
+                }
+            }
+        }
+    }
+    @FXML
+    void getItemComponents(MouseEvent event) {
+        compList.getItems().clear();
+        if (searchView.getSelectionModel().getSelectedItem() != null) {//if something is chosen
+            for (int i = 0; i < list.numNodes(); i++) {//scrolling through dc
+                DisplayCase dc = (DisplayCase) list.get(i);
+                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {//scrolling through dt
+                    DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                    for (int k = 0; k < dt.items.numNodes(); k++) {//scrolling through items
+                        Items items = (Items) dt.items.get(k);
+                        String str = searchView.getSelectionModel().getSelectedItem();
+                        String str1 = items + "";
+
+                        if (str.contains(str1)) {//if chosen item in searchView is the item currently that the loop is at
+                            for (int l = 0; l < items.components.numNodes(); l++) {//scrolling through materials
+                                Components cp = (Components) items.components.get(l);
+                                compList.getItems().add(cp);
+                            }
+                        }
+                    }
+
                 }
             }
         }
