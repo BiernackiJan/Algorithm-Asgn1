@@ -471,12 +471,13 @@ public class CaseController {
     public void save() throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("Jewellery.xml"));
-        out.writeObject(list.getHead());
+        LinkedList<DisplayCase> list1 = list;
+        out.writeObject(list1);
         out.close();
     }
 
 
-    public void loading() throws Exception {
+    public void load() throws Exception {
         //list of classes that you wish to include in the serialisation, separated by a comma
         Class<?>[] classes = new Class[]{DisplayCase.class, DisplayTray.class, Items.class, Components.class, LinkedList.class, Node.class };
 
@@ -487,15 +488,7 @@ public class CaseController {
 
         //doing the actual serialisation to an XML file
         ObjectInputStream in = xstream.createObjectInputStream(new FileReader("Jewellery.xml"));
-        list.setHead((Node) in.readObject());
+        list = (LinkedList<DisplayCase>) in.readObject();
         in.close();
-    }
-
-    public void load(){
-        try{
-            loading();
-        }catch (Exception e){
-            System.out.println("Error reading from file: " + e);
-        }
     }
 }
