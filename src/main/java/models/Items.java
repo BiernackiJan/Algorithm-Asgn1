@@ -11,12 +11,12 @@ public class Items {
     private String imageURl = "no url";
     private int rPrice;
 
-    public Items(String description, String type, String gender, int rPrice) {
+    public Items(String description, String type, String gender, int rPrice, String imageU) {
         this.description = description;
         this.type = type;
         this.gender = gender;
-        //imageURL?????!!!
         this.rPrice = rPrice;
+        this.imageURl = imageU;
     }
 
     public String getDescription() {

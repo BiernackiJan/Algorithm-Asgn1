@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Scene1" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
+<AnchorPane fx:id="Scene1" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
     <children>
         <TabPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="514.0" prefWidth="811.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="Infinity" AnchorPane.topAnchor="-1.0">
             <tabs>
@@ -240,7 +240,13 @@
                                     </font>
                                 </Button>
                                 <ListView fx:id="viewMaterial" layoutX="373.0" layoutY="148.0" prefHeight="237.0" prefWidth="323.0" />
-                        <ImageView fx:id="itemImage" fitHeight="78.0" fitWidth="108.0" layoutX="588.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+                        <Group layoutX="578.0" layoutY="39.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GOLD" height="104.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="92.0" layoutX="5.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="108.0" />
+                              <ImageView fx:id="itemImage" fitHeight="92.0" fitWidth="108.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" />
+                           </children>
+                        </Group>
                         <ComboBox fx:id="chooseItem" layoutX="406.0" layoutY="77.0" prefHeight="27.0" prefWidth="161.0" />
                         <Label layoutX="449.0" layoutY="55.0" prefHeight="22.0" prefWidth="75.0" text="Choose Item">
                            <font>

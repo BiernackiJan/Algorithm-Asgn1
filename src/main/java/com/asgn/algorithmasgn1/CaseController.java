@@ -94,6 +94,8 @@ public class CaseController {
     private ComboBox<Items> itemToDel;
     @FXML
     private ComboBox<DisplayTray> chooseTray;
+    @FXML
+    private TextField imageUrl;
 
 
 
@@ -254,7 +256,7 @@ public class CaseController {
     @FXML
     void addItem(MouseEvent event){
         int tPrice = Integer.parseInt(rPrice.getValue()); //changing rPrice from string to int for later calculations and to input into constructor
-        Items item = new Items(typeDesc.getText(),itemType.getValue(),gender.getValue(),tPrice);
+        Items item = new Items(typeDesc.getText(),itemType.getValue(),gender.getValue(),tPrice, imageUrl.getText());
         DisplayTray displayTrayChosen = pickTray.getSelectionModel().getSelectedItem(); //setting the chosen display Tray to be able to add Item to it
         displayTrayChosen.addItem(item); //adding item to chosen tray
         totalPrice += tPrice; //adding the retail price of item to totalPrice of all stock
@@ -262,7 +264,6 @@ public class CaseController {
         chooseItem.getItems().add(item);
 
         displayTrayChosen.priceUp(tPrice);
-        //itemToDel.getItems().add(item);
     }
     @FXML
     void listSelected(MouseEvent event){
@@ -298,7 +299,7 @@ public class CaseController {
     void smartAdd(MouseEvent event) {
         boolean it = false;
         int tPrice = Integer.parseInt(rPrice.getValue()); //changing rPrice from string to int for later calculations and to input into constructor
-        Items itemToAdd = new Items(typeDesc.getText(), itemType.getValue(), gender.getValue(), tPrice);
+        Items itemToAdd = new Items(typeDesc.getText(), itemType.getValue(), gender.getValue(), tPrice, imageUrl.getText());
 
         if (!it) {
             for (int i = 0; i < list.numNodes(); i++) {
@@ -316,8 +317,6 @@ public class CaseController {
                                 Items item = (Items) dt.items.get(k);
                                 if (it == false) {
                                     String str = itemType.getValue() + "";
-                                    System.out.println(str);
-                                    System.out.println(item.getType());
                                     if (item.getType().equals(str)) {
                                         dt.items.add(itemToAdd);
                                         totalPrice += tPrice;
@@ -350,22 +349,22 @@ public class CaseController {
     //Materials
     @FXML
     void addMaterial(MouseEvent event){
-        viewMaterial.getItems().clear();
         int w = Integer.parseInt(weight.getValue());
         int q = Integer.parseInt(quality.getValue());
         Components cp = new Components(type.getValue(), materialDesc.getText(), w, q);
         Items itemChosen = pickItem.getSelectionModel().getSelectedItem();
         itemChosen.addComponent(cp);
-        String mat = "Components: " + '\n' + itemChosen.components.listAll();
-        viewMaterial.getItems().add(mat);
     }
 
     @FXML
-    void showMaterials(MouseEvent event){
+    void showMaterials(MouseEvent event) throws FileNotFoundException {
+        viewMaterial.getItems().clear(); //clearing the viewMaterials list view on button click
         Items item =  chooseItem.getSelectionModel().getSelectedItem();
-        for (int i = 0; i < item.components.numNodes(); i++ ){
-
-        }
+        String cp = "Components: " + '\n'+ "  " + item.components.listAll();//Creating the string to be used in the list View
+        viewMaterial.getItems().add(cp);//adding to Materials listView
+        String url = item.getImageURl();//creating the string url by fetching the item Url for chosen item
+        Image image = new Image(url);
+        itemImage.setImage(image);
     }
 
 
