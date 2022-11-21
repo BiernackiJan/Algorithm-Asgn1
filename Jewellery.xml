@@ -1,0 +1,59 @@
+<object-stream>
+  <Resources.Node>
+    <data class="models.DisplayCase">
+      <nodes>0</nodes>
+      <displayTrays>
+        <head>
+          <data class="models.DisplayTray">
+            <items>
+              <head>
+                <next>
+                  <data class="models.Items">
+                    <components>
+                      <nodes>0</nodes>
+                    </components>
+                    <description>dahkdja</description>
+                    <type>Ring</type>
+                    <gender>Men</gender>
+                    <imageURl>no url</imageURl>
+                    <rPrice>12</rPrice>
+                  </data>
+                </next>
+                <data class="models.Items">
+                  <components>
+                    <head>
+                      <data class="models.Components">
+                        <type>Gold</type>
+                        <description>31321</description>
+                        <weight>12</weight>
+                        <quality>12</quality>
+                      </data>
+                    </head>
+                    <nodes>1</nodes>
+                  </components>
+                  <description>dahkdja</description>
+                  <type>Watch</type>
+                  <gender>Men</gender>
+                  <imageURl>no url</imageURl>
+                  <rPrice>12</rPrice>
+                </data>
+              </head>
+              <nodes>2</nodes>
+            </items>
+            <trayIdentifier>A1</trayIdentifier>
+            <color>Ocean Blue</color>
+            <width>8 cm</width>
+            <depth>8 cm</depth>
+            <trayPrice>24</trayPrice>
+          </data>
+        </head>
+        <nodes>1</nodes>
+      </displayTrays>
+      <caseNumber>1</caseNumber>
+      <mounted> Lit</mounted>
+      <lit> Wall Mounted</lit>
+      <letter>B</letter>
+      <casePrice>0</casePrice>
+    </data>
+  </Resources.Node>
+</object-stream>
