@@ -73,7 +73,7 @@ public class LinkedList<E> {
 
     public void deleteNode(int index) {
         if (head != null) {
-            if (index <= 0) {
+            if (index == 0) {
                 if (head.getNext() == null) {
                     head = null;
                 } else {
@@ -92,6 +92,7 @@ public class LinkedList<E> {
                     current.setNext(null);
                 }
             }
+            nodes --;
         }
     }
 
