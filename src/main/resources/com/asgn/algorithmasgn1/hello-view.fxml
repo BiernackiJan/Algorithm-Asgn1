@@ -28,9 +28,9 @@
                                     <image>
                                         <Image url="https://www.onlinelogomaker.com/blog/wp-content/uploads/2017/12/jewelry-logo.jpg" />
                                     </image></ImageView>
-                                <Label layoutX="273.0" layoutY="29.0" prefHeight="62.0" prefWidth="251.0" text="WELCOME TO MY " textAlignment="CENTER">
+                                <Label layoutX="286.0" layoutY="29.0" prefHeight="62.0" prefWidth="239.0" text="WELCOME TO MY " textAlignment="CENTER">
                                     <font>
-                                        <Font name="Ravie" size="25.0" />
+                                        <Font name="Ravie" size="20.0" />
                                     </font>
                                 </Label>
                                 <Label layoutX="247.0" layoutY="67.0" prefHeight="48.0" prefWidth="320.0" text="JEWELLERY STORE" textFill="RED" underline="true">
