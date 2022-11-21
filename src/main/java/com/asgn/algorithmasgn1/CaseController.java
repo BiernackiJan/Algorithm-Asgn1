@@ -6,16 +6,15 @@ import Resources.Node;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import models.Components;
 import models.DisplayCase;
 import models.DisplayTray;
 import models.Items;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -98,7 +97,7 @@ public class CaseController {
 
 
 
-    //components tab
+    //Components tab
     @FXML
     private ComboBox<Items> pickItem;
     @FXML
@@ -111,6 +110,10 @@ public class CaseController {
     private ComboBox<String> quality;
     @FXML
     private ListView<String> viewMaterial;
+    @FXML
+    private ComboBox<Items> chooseItem;
+    @FXML
+    private ImageView itemImage;
 
 
     //Inspect Stock
@@ -122,6 +125,8 @@ public class CaseController {
     private ListView<String> searchView;
     @FXML
     private TextField keywords;
+
+
 
 
 
@@ -254,6 +259,7 @@ public class CaseController {
         displayTrayChosen.addItem(item); //adding item to chosen tray
         totalPrice += tPrice; //adding the retail price of item to totalPrice of all stock
         pickItem.getItems().add(item);//populating the choice box with each added item
+        chooseItem.getItems().add(item);
 
         displayTrayChosen.priceUp(tPrice);
         //itemToDel.getItems().add(item);
@@ -354,6 +360,14 @@ public class CaseController {
         viewMaterial.getItems().add(mat);
     }
 
+    @FXML
+    void showMaterials(MouseEvent event){
+        Items item =  chooseItem.getSelectionModel().getSelectedItem();
+        for (int i = 0; i < item.components.numNodes(); i++ ){
+
+        }
+    }
+
 
 
     //Inspect Stock
@@ -436,6 +450,8 @@ public class CaseController {
             }
         }
     }
+
+
 
 
     public void initialize() {
