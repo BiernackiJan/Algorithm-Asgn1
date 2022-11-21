@@ -107,4 +107,15 @@ public class LinkedList<E> {
         return head;
     }
 
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    @Override
+    public String toString() {
+        return "LinkedList{" +
+                "head=" + head +
+                ", nodes=" + nodes +
+                '}';
+    }
 }

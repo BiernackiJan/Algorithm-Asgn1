@@ -1,7 +1,9 @@
 package com.asgn.algorithmasgn1;
 
+import com.thoughtworks.xstream.XStream;
 import Resources.LinkedList;
 import Resources.Node;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -11,7 +13,9 @@ import models.DisplayTray;
 import models.Items;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -408,7 +412,7 @@ public class CaseController {
         }
     }
     @FXML
-    void getItemComponents(MouseEvent event) {
+    public void getItemComponents(MouseEvent event) {
         compList.getItems().clear();
         if (searchView.getSelectionModel().getSelectedItem() != null) {//if something is chosen
             for (int i = 0; i < list.numNodes(); i++) {//scrolling through dc
@@ -464,18 +468,34 @@ public class CaseController {
     }
 
 
-//    public void load() throws Exception {
-//        //list of classes that you wish to include in the serialisation, separated by a comma
-//        Class<?>[] classes = new Class[]{DisplayCase.class};
-//
-//        //setting up the xstream object with default security and the above classes
-//        XStream xstream = new XStream(new DomDriver());
-//        XStream.setupDefaultSecurity(xstream);
-//        xstream.allowTypes(classes);
-//
-//        //doing the actual serialisation to an XML file
-//        ObjectInputStream in = xstream.createObjectInputStream(new FileReader(fileName()));
-//        developers = (List<Developer>) in.readObject();
-//        in.close();
-//    }
+    public void save() throws Exception {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("Jewellery.xml"));
+        out.writeObject(list.getHead());
+        out.close();
+    }
+
+
+    public void loading() throws Exception {
+        //list of classes that you wish to include in the serialisation, separated by a comma
+        Class<?>[] classes = new Class[]{DisplayCase.class, DisplayTray.class, Items.class, Components.class, LinkedList.class, Node.class };
+
+        //setting up the xstream object with default security and the above classes
+        XStream xstream = new XStream(new DomDriver());
+        XStream.setupDefaultSecurity(xstream);
+        xstream.allowTypes(classes);
+
+        //doing the actual serialisation to an XML file
+        ObjectInputStream in = xstream.createObjectInputStream(new FileReader("Jewellery.xml"));
+        list.setHead((Node) in.readObject());
+        in.close();
+    }
+
+    public void load(){
+        try{
+            loading();
+        }catch (Exception e){
+            System.out.println("Error reading from file: " + e);
+        }
+    }
 }
