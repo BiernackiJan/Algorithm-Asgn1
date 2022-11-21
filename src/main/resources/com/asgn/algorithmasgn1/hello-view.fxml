@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="Scene1" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
+<AnchorPane fx:id="Scene1" prefHeight="482.0" prefWidth="811.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.asgn.algorithmasgn1.CaseController">
     <children>
         <TabPane layoutY="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="514.0" prefWidth="811.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="Infinity" AnchorPane.topAnchor="-1.0">
             <tabs>

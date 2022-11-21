@@ -4,6 +4,7 @@ import com.thoughtworks.xstream.XStream;
 import Resources.LinkedList;
 import Resources.Node;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -25,6 +26,7 @@ public class CaseController {
     private int totalPrice; //Int used to calculate the total price of all stock in the system
 
 
+    //https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg
 
     //Home tab
     @FXML
@@ -269,6 +271,20 @@ public class CaseController {
         DisplayTray displayTrayChosen = pickTray.getSelectionModel().getSelectedItem();
         String it = displayTrayChosen.items.listAll(); //adding all items in chosen tray to str
         viewItems.getItems().add(it);//adding str to ListView of viewItems
+
+        pickItem.getItems().clear();
+        chooseItem.getItems().clear();
+        for(int i = 0; i < list.numNodes(); i++){
+            DisplayCase dc = (DisplayCase) list.get(i);
+            for(int j = 0; j < dc.displayTrays.numNodes(); j++){
+                DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                for(int k = 0; k < dt.items.numNodes(); k++){
+                    Items item = (Items) dt.items.get(k);
+                    pickItem.getItems().add(item);
+                    chooseItem.getItems().add(item);
+                }
+            }
+        }
     }
     @FXML
     void delete(MouseEvent event){
@@ -278,7 +294,9 @@ public class CaseController {
         int price = itemToDel.getSelectionModel().getSelectedItem().getrPrice();
         totalPrice -= price;
         tray.items.deleteNode(index);
-        pickItem.getItems().remove(index);
+//        pickItem.getItems().clear();
+//        pickItem.getItems().remove(index);
+//        chooseItem.getItems().remove(index);
         tray.priceDown(price);
     }
     @FXML
@@ -315,7 +333,7 @@ public class CaseController {
                                 Items item = (Items) dt.items.get(k);
                                 if (it == false) {
                                     String str = itemType.getValue() + "";
-                                    if (item.getType().equals(str)) {
+                                    if (item.getType().contains(str)) {
                                         dt.items.add(itemToAdd);
                                         totalPrice += tPrice;
                                         it = true;
@@ -353,7 +371,6 @@ public class CaseController {
         Items itemChosen = pickItem.getSelectionModel().getSelectedItem();
         itemChosen.addComponent(cp);
     }
-
     @FXML
     void showMaterials(MouseEvent event) throws FileNotFoundException {
         viewMaterial.getItems().clear(); //clearing the viewMaterials list view on button click
