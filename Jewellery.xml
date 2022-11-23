@@ -7,18 +7,30 @@
           <head>
             <data class="models.DisplayTray">
               <items>
-                <nodes>0</nodes>
+                <head>
+                  <data class="models.Items">
+                    <components>
+                      <nodes>0</nodes>
+                    </components>
+                    <description>nkjnkda</description>
+                    <type>Watch</type>
+                    <gender>Men</gender>
+                    <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                    <rPrice>123</rPrice>
+                  </data>
+                </head>
+                <nodes>1</nodes>
               </items>
               <trayIdentifier>A1</trayIdentifier>
               <color>Ocean Blue</color>
               <width>8 cm</width>
               <depth>8 cm</depth>
-              <trayPrice>0</trayPrice>
+              <trayPrice>123</trayPrice>
             </data>
           </head>
           <nodes>1</nodes>
         </displayTrays>
-        <caseNumber>2</caseNumber>
+        <caseNumber>1</caseNumber>
         <mounted> Lit</mounted>
         <lit> Wall Mounted</lit>
         <letter>A</letter>
