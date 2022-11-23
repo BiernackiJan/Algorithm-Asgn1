@@ -267,7 +267,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="483.0" prefWidth="807.0">
                             <children>
                                 <TreeView fx:id="viewAll" layoutX="14.0" layoutY="14.0" prefHeight="325.0" prefWidth="417.0" />
-                                <Button layoutX="168.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#viewAllStock" prefHeight="31.0" prefWidth="110.0" text="View All Stock" />
+                                <Button layoutX="97.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#viewAllStock" prefHeight="31.0" prefWidth="110.0" text="View All Stock" />
                                 <Group layoutX="446.0" layoutY="14.0">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#02784a" height="282.0" stroke="BLACK" strokeType="INSIDE" width="357.0" />
@@ -291,6 +291,7 @@
                                         </Label>
                                     </children>
                                 </Group>
+                        <Button layoutX="242.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#expandTree" prefHeight="31.0" prefWidth="110.0" text="Expand View" />
                             </children>
                         </AnchorPane>
                     </content>

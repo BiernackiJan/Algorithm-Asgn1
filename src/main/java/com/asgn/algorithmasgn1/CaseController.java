@@ -388,31 +388,54 @@ public class CaseController {
     @FXML
     void viewAllStock(MouseEvent event) {
         //Inspect Store
-        TreeItem rootItem = new TreeItem<>("Display Cases: ");
 
-        viewAll.setRoot(rootItem);
+        if(list.get(0) != null) {
+            TreeItem rootItem = new TreeItem<>("Display Cases: ");
 
-        String str = "   Trays:";
-        String str1 = "    Items:";
+            viewAll.setRoot(rootItem);
 
-        for(int i = 0; i < list.numNodes(); i++) {
-            DisplayCase dc = (DisplayCase) list.get(i);
-            TreeItem treeCase = new TreeItem(dc + str);
-            rootItem.getChildren().add(treeCase);
-            for (int j = 0; j < dc.displayTrays.numNodes(); j++){
-                DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
-                TreeItem treeTray = new TreeItem(dt + str1);
-                treeCase.getChildren().add(treeTray);
-                for(int k = 0; k < dt.items.numNodes(); k++){
-                    Items items = (Items) dt.items.get(k);
-                    TreeItem treeItem = new TreeItem(items);
-                    treeTray.getChildren().add(treeItem);
-                    for(int l = 0; l < items.components.numNodes(); l++){
-                        Components comp = (Components) items.components.get(l);
-                        TreeItem compItem = new TreeItem(comp);
-                        treeItem.getChildren().add(compItem);
+            String str = "   Trays:";
+            String str1 = "    Items:";
+
+            for (int i = 0; i < list.numNodes(); i++) {
+                DisplayCase dc = (DisplayCase) list.get(i);
+                TreeItem treeCase = new TreeItem(dc + str);
+                rootItem.getChildren().add(treeCase);
+                for (int j = 0; j < dc.displayTrays.numNodes(); j++) {
+                    DisplayTray dt = (DisplayTray) dc.displayTrays.get(j);
+                    TreeItem treeTray = new TreeItem(dt + str1);
+                    treeCase.getChildren().add(treeTray);
+                    for (int k = 0; k < dt.items.numNodes(); k++) {
+                        Items items = (Items) dt.items.get(k);
+                        TreeItem treeItem = new TreeItem(items);
+                        treeTray.getChildren().add(treeItem);
+                        for (int l = 0; l < items.components.numNodes(); l++) {
+                            Components comp = (Components) items.components.get(l);
+                            TreeItem compItem = new TreeItem(comp);
+                            treeItem.getChildren().add(compItem);
+                        }
                     }
                 }
+            }
+        }else {
+            TreeItem root = new TreeItem<>("No data inserted ");
+            viewAll.setRoot(root);
+        }
+    }
+
+    @FXML
+    private void expandTree(MouseEvent event){
+        TreeItem treeRoot = viewAll.getRoot();
+        expandTreeView(treeRoot);
+    }
+
+
+
+    private void expandTreeView(TreeItem<?> item){
+        if(item != null && !item.isLeaf()){
+            item.setExpanded(true);
+            for(TreeItem<?> child :item.getChildren()){
+                expandTreeView(child);
             }
         }
     }

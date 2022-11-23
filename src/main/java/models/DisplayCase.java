@@ -57,7 +57,7 @@ public class DisplayCase extends LinkedList{
         return lit;
     }
 
-    public void setLit ( String lit){
+    public void setLit (String lit){
         this.lit = lit;
     }
 
@@ -67,7 +67,9 @@ public class DisplayCase extends LinkedList{
 
     public void getTray(int index) {displayTrays.get(index);}
 
+    public String getLetter() { return letter; }
 
+    public void setLetter(String letter) { this.letter = letter;}
 
     @Override
     public String toString() {

@@ -69,4 +69,13 @@ public class LinkedListTest {
         assertEquals("George",names.get(1));
         assertNull(names.get(2));
     }
+
+    @Test
+    void checkDeleteAll(){
+        assertEquals("harryhhhhhmary", names.listAll());
+        assertEquals("harry", names.getHead().getData());
+        names.delAll();
+        assertNull(names.getHead());
+        assertEquals("There are no items",names.listAll());
+    }
 }

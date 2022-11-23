@@ -5,24 +5,112 @@
         <nodes>0</nodes>
         <displayTrays>
           <head>
+            <next>
+              <data class="models.DisplayTray">
+                <items>
+                  <head>
+                    <next>
+                      <data class="models.Items">
+                        <components>
+                          <nodes>0</nodes>
+                        </components>
+                        <description>carved</description>
+                        <type>Earring</type>
+                        <gender>Women</gender>
+                        <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                        <rPrice>124</rPrice>
+                      </data>
+                    </next>
+                    <data class="models.Items">
+                      <components>
+                        <nodes>0</nodes>
+                      </components>
+                      <description>carved</description>
+                      <type>Earring</type>
+                      <gender>Men</gender>
+                      <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                      <rPrice>124</rPrice>
+                    </data>
+                  </head>
+                  <nodes>2</nodes>
+                </items>
+                <trayIdentifier>A5</trayIdentifier>
+                <color>Ocean Blue</color>
+                <width>9 cm</width>
+                <depth>9 cm</depth>
+                <trayPrice>124</trayPrice>
+              </data>
+            </next>
             <data class="models.DisplayTray">
               <items>
-                <nodes>0</nodes>
+                <head>
+                  <next>
+                    <next>
+                      <data class="models.Items">
+                        <components>
+                          <nodes>0</nodes>
+                        </components>
+                        <description>carved</description>
+                        <type>Watch</type>
+                        <gender>Men</gender>
+                        <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                        <rPrice>124</rPrice>
+                      </data>
+                    </next>
+                    <data class="models.Items">
+                      <components>
+                        <head>
+                          <data class="models.Components">
+                            <type>Silver</type>
+                            <description>jkda</description>
+                            <weight>12</weight>
+                            <quality>12</quality>
+                          </data>
+                        </head>
+                        <nodes>1</nodes>
+                      </components>
+                      <description>carved</description>
+                      <type>Necklace</type>
+                      <gender>Men</gender>
+                      <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                      <rPrice>123</rPrice>
+                    </data>
+                  </next>
+                  <data class="models.Items">
+                    <components>
+                      <head>
+                        <data class="models.Components">
+                          <type>Stainless Steel</type>
+                          <description>jkda</description>
+                          <weight>12</weight>
+                          <quality>12</quality>
+                        </data>
+                      </head>
+                      <nodes>1</nodes>
+                    </components>
+                    <description>carved</description>
+                    <type>Watch</type>
+                    <gender>Men</gender>
+                    <imageURl>https://m.media-amazon.com/images/I/71TsTgt2ecL._AC_UL1000_.jpg</imageURl>
+                    <rPrice>123</rPrice>
+                  </data>
+                </head>
+                <nodes>3</nodes>
               </items>
-              <trayIdentifier>A1</trayIdentifier>
+              <trayIdentifier>A3</trayIdentifier>
               <color>Ocean Blue</color>
-              <width>8 cm</width>
-              <depth>8 cm</depth>
-              <trayPrice>0</trayPrice>
+              <width>9 cm</width>
+              <depth>9 cm</depth>
+              <trayPrice>370</trayPrice>
             </data>
           </head>
-          <nodes>1</nodes>
+          <nodes>2</nodes>
         </displayTrays>
-        <caseNumber>2</caseNumber>
+        <caseNumber>1</caseNumber>
         <mounted> Lit</mounted>
         <lit> Wall Mounted</lit>
         <letter>A</letter>
-        <casePrice>0</casePrice>
+        <casePrice>494</casePrice>
       </data>
     </head>
     <nodes>1</nodes>
