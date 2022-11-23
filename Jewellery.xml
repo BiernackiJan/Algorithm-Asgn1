@@ -1,6 +1,51 @@
 <object-stream>
   <Resources.LinkedList>
     <head>
+      <next>
+        <data class="models.DisplayCase">
+          <nodes>0</nodes>
+          <displayTrays>
+            <head>
+              <data class="models.DisplayTray">
+                <items>
+                  <head>
+                    <data class="models.Items">
+                      <components>
+                        <head>
+                          <data class="models.Components">
+                            <type>Stainless Steel</type>
+                            <description>jknjk</description>
+                            <weight>12</weight>
+                            <quality>12</quality>
+                          </data>
+                        </head>
+                        <nodes>1</nodes>
+                      </components>
+                      <description>ugufu</description>
+                      <type>Watch</type>
+                      <gender>Men</gender>
+                      <imageURl>url</imageURl>
+                      <rPrice>123</rPrice>
+                    </data>
+                  </head>
+                  <nodes>1</nodes>
+                </items>
+                <trayIdentifier>A5</trayIdentifier>
+                <color>Ocean Blue</color>
+                <width>8 cm</width>
+                <depth>8 cm</depth>
+                <trayPrice>123</trayPrice>
+              </data>
+            </head>
+            <nodes>1</nodes>
+          </displayTrays>
+          <caseNumber>1</caseNumber>
+          <mounted> Lit</mounted>
+          <lit> Wall Mounted</lit>
+          <letter>B</letter>
+          <casePrice>0</casePrice>
+        </data>
+      </next>
       <data class="models.DisplayCase">
         <nodes>0</nodes>
         <displayTrays>
@@ -25,6 +70,6 @@
         <casePrice>0</casePrice>
       </data>
     </head>
-    <nodes>1</nodes>
+    <nodes>2</nodes>
   </Resources.LinkedList>
 </object-stream>

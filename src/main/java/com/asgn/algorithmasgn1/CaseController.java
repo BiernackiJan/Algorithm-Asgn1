@@ -389,7 +389,7 @@ public class CaseController {
     void viewAllStock(MouseEvent event) {
         //Inspect Store
 
-        if(list.get(0) != null) {
+        if(list.numNodes() != 0) {
             TreeItem rootItem = new TreeItem<>("Display Cases: ");
 
             viewAll.setRoot(rootItem);
