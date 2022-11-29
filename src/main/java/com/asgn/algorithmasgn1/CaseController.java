@@ -150,6 +150,7 @@ public class CaseController {
         } else {
             DisplayCase dc1 = new DisplayCase(CaseLetter.getValue(), CaseNumber.getValue(), pickLit.getValue(), pickMounted.getValue()); //creating a type DisplayCase object for easier adding to Strings & LL
             list.add(dc1); //adding to LL
+
             pickCase.getItems().add(dc1); //adding cd1 to pickCase ComboBox
             pickDCase.getItems().add(dc1); //adding dc1 to pickDCase ComboBox
             showCase.getItems().add(dc1); //adding id to showCase ComboBox
